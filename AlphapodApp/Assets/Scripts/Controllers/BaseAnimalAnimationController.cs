@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseAnimalAnimationController : MonoBehaviour {
+public class BaseAnimalAnimationController : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    protected Animator[] childrenAnimators;
+    protected Animator animator;
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        childrenAnimators = new Animator[GetComponentsInChildren<Animator>().Length];
+        childrenAnimators = GetComponentsInChildren<Animator>();
+    }
+
+    protected virtual void OnMouseDown()
+    {
+        animator.SetTrigger("Tapped");
+        foreach (Animator animator in childrenAnimators)
+        {
+            animator.SetTrigger("Tapped");
+        }
+    }
 }
