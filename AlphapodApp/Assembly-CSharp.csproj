@@ -125,6 +125,7 @@
     <Compile Include="Assets\Scripts\Abstracts\enums\View.cs" />
     <Compile Include="Assets\Scripts\Controllers\BaseAnimalAnimationController.cs" />
     <Compile Include="Assets\Scripts\Controllers\BaseAnimalOutlineController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\BasePodController.cs" />
     <Compile Include="Assets\Scripts\Controllers\UI\AlphabetViewController.cs" />
     <Compile Include="Assets\Scripts\Controllers\UI\CameraCrop.cs" />
     <Compile Include="Assets\Scripts\Controllers\UI\ColoringAnimalController.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Assets\Scripts\Events\ColoringResetRequestEvent.cs" />
     <Compile Include="Assets\Scripts\Events\NextLetterRequestEvent.cs" />
     <Compile Include="Assets\Scripts\Events\PodResetRequestEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\PodTappedEvent.cs" />
     <Compile Include="Assets\Scripts\Events\UI\ColoringViewRequestEvent.cs" />
     <Compile Include="Assets\Scripts\Events\UI\LetterMenuViewRequestEvent.cs" />
     <Compile Include="Assets\Scripts\Events\UI\MainViewRequestEvent.cs" />

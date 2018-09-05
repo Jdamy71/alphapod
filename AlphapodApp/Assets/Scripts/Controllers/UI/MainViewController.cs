@@ -9,11 +9,14 @@ public class MainViewController : MonoBehaviour
 
     public Button podResetButton, preferencesButton, letterMenuButton, nextLetterButton, bucketButton;
     public Sprite[] bucketSprites;
+    public Text currentAnimalText;
+    public Animator currentAnimalTextAnimator;
 
     private void Awake()
     {
         CodeControl.Message.AddListener<ColoringFinishedEvent>(OnColoringFinished);
         CodeControl.Message.AddListener<ColoringResetRequestEvent>(OnColoringResetRequested);
+        CodeControl.Message.AddListener<PodTappedEvent>(OnPodTapped);
     }
 
     void Start()
@@ -26,6 +29,7 @@ public class MainViewController : MonoBehaviour
         podResetButton.onClick.AddListener(() =>
         {
             DispatchPodResetRequestEvent();
+            ResetCurrentAnimalText();
         });
 
         preferencesButton.onClick.AddListener(() =>
@@ -48,6 +52,16 @@ public class MainViewController : MonoBehaviour
             DispatchColoringScreenRequestEvent();
         });
 
+    }
+
+    private void ResetCurrentAnimalText()
+    {
+        currentAnimalTextAnimator.SetTrigger("PodReset");
+    }
+
+    private void OnPodTapped(PodTappedEvent obj)
+    {
+        currentAnimalTextAnimator.SetTrigger("Tapped");
     }
 
     private void OnColoringFinished(ColoringFinishedEvent obj)
