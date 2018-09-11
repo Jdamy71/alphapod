@@ -56,12 +56,14 @@ public class MainViewController : MonoBehaviour
 
     private void ResetCurrentAnimalText()
     {
-        currentAnimalTextAnimator.SetTrigger("PodReset");
+        currentAnimalTextAnimator.SetTrigger("Reset");
+        podResetButton.gameObject.SetActive(false);
     }
 
     private void OnPodTapped(PodTappedEvent obj)
     {
         currentAnimalTextAnimator.SetTrigger("Tapped");
+        podResetButton.gameObject.SetActive(true);
     }
 
     private void OnColoringFinished(ColoringFinishedEvent obj)

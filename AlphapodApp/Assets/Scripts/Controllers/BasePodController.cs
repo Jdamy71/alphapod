@@ -4,11 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class BasePodController : MonoBehaviour
 {
-    private Animator animator;
+    public Animator[] animators;
 
     protected virtual void Awake()
     {
-        animator = GetComponent<Animator>();
         CodeControl.Message.AddListener<PodResetRequestEvent>(OnPodResetRequested);
     }
 
@@ -19,12 +18,18 @@ public class BasePodController : MonoBehaviour
 
     private void ResetPod()
     {
-        animator.SetTrigger("Reset");
+        foreach(Animator animator in animators)
+        {
+            animator.SetTrigger("Reset");
+        }
     }
 
     private void ActivatePod()
     {
-        animator.SetTrigger("Tapped");
+        foreach (Animator animator in animators)
+        {
+            animator.SetTrigger("Tapped");
+        }
         DispatchPodTappedEvent();
     }
 
